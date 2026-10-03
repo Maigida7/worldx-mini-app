@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>WorldX</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#050b14;color:#fff;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.app{max-width:520px;margin:auto;min-height:100vh;padding:18px 15px 94px;background:radial-gradient(circle at 50% -10%,#12385d 0,#071526 34%,#050b14 72%)}
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}.brand{display:flex;align-items:center;gap:10px}
+.logo{width:43px;height:43px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#1bd8ff,#3158ff);font-weight:950;font-size:22px;box-shadow:0 0 24px #158cff55}
+.brand b{font-size:20px}.brand small{display:block;color:#7f9ab7;font-size:11px}.avatar{width:43px;height:43px;border-radius:50%;display:grid;place-items:center;background:#132a43;border:1px solid #2a4765;font-size:20px}
+.card{background:#0b1b2e;border:1px solid #1d3956;border-radius:21px;padding:17px;margin-bottom:12px}.gate{text-align:center;padding:24px 17px}.gateIcon{font-size:42px}
+h2{margin:9px 0 7px}.muted{color:#8fa6bd;font-size:13px;line-height:1.5}
+.task{display:flex;align-items:center;gap:12px;text-align:left;margin:10px 0;padding:13px;border:1px solid #24415e;border-radius:17px;background:#0d2137}.taskicon{width:45px;height:45px;border-radius:14px;background:#132b46;display:grid;place-items:center;font-size:21px;flex:none}.taskbody{flex:1}.taskbody b{font-size:14px}.reward{display:block;color:#48d5ff;font-size:12px;margin-top:4px}
+button{border:0;border-radius:12px;padding:11px 13px;background:#176cff;color:#fff;font-weight:850;cursor:pointer}.full{width:100%;margin-top:6px}.secondary{background:#1a3048}.success{background:#10845d}
+.status{font-size:12px;color:#8fa6bd;margin-top:10px;line-height:1.45}.hidden{display:none}
+.hero{border:1px solid #214566;border-radius:26px;padding:22px 19px;background:linear-gradient(145deg,#0d2a46,#0a1829);box-shadow:0 18px 45px #0005;position:relative;overflow:hidden}
+.points{font-size:39px;font-weight:950;margin:4px 0 15px}.check{width:100%;padding:13px;background:linear-gradient(90deg,#176cff,#248dff)}
+.section{display:flex;justify-content:space-between;align-items:center;margin:22px 2px 10px}.section span{font-size:12px;color:#4bcfff}
+.quick{display:grid;grid-template-columns:1fr 1fr;gap:10px}.item{border:1px solid #1d3956;border-radius:19px;background:#0b1b2e;padding:17px;min-height:92px}.ico{font-size:23px}.item b{display:block;margin-top:8px}.item small{color:#8097ae}
+.recent{display:flex;align-items:center;gap:12px;border:1px solid #1d3956;border-radius:18px;background:#0b1b2e;padding:14px;margin-bottom:9px}.go{padding:9px 12px}
+.note{text-align:center;color:#607992;font-size:11px;margin-top:16px;line-height:1.5}
+nav{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);width:min(490px,calc(100% - 20px));display:flex;justify-content:space-around;background:#0a1829e8;border:1px solid #29445f;border-radius:21px;padding:9px 4px;backdrop-filter:blur(15px);z-index:5}
+nav div{text-align:center;color:#7f96ad;font-size:11px;min-width:62px;padding:3px}.active{color:#fff!important}.navico{font-size:19px;margin-bottom:2px}
+</style>
+</head>
+<body>
+<div class="app">
+
+<div id="gate">
+  <div class="top">
+    <div class="brand"><div class="logo">X</div><div><b>WorldX</b><small>WorldX Network</small></div></div>
+  </div>
+  <div class="card gate">
+    <div class="gateIcon">🔐</div>
+    <h2>Unlock WorldX</h2>
+    <div class="muted">Complete the two official WorldX social tasks before entering the WorldX community.</div>
+
+    <div class="task">
+      <div class="taskicon">𝕏</div>
+      <div class="taskbody"><b>Follow WorldX Network</b><span class="reward">+1,000 WX</span></div>
+      <button onclick="openX()">Follow</button>
+    </div>
+
+    <div class="task">
+      <div class="taskicon">▶️</div>
+      <div class="taskbody"><b>Subscribe to WorldX Network</b><span class="reward">+1,000 WX</span></div>
+      <button onclick="openYT()">Subscribe</button>
+    </div>
+
+    <button class="full secondary" onclick="verify()">✓ Verify Tasks</button>
+    <div id="status" class="status">Verification is currently a prototype. Real X/YouTube verification will be performed by the WorldX backend before launch.</div>
+  </div>
+</div>
+
+<div id="home" class="hidden">
+  <div class="top">
+    <div class="brand"><div class="logo">X</div><div><b>WorldX</b><small>WorldX Network</small></div></div>
+    <div class="avatar">👤</div>
+  </div>
+
+  <div class="hero">
+    <div class="muted">Your WorldX Points</div>
+    <div class="points">2,000 WX</div>
+    <button class="check" onclick="checkIn()">🎁 Daily Check-in</button>
+    <div id="checkMsg" class="note"></div>
+  </div>
+
+  <div class="section"><b>Quick Actions</b><span>Explore WorldX</span></div>
+  <div class="quick">
+    <div class="item"><div class="ico">📋</div><b>Tasks</b><small>Earn WX</small></div>
+    <div class="item"><div class="ico">🎁</div><b>Rewards</b><small>Your rewards</small></div>
+    <div class="item"><div class="ico">👥</div><b>Friends</b><small>Invite & earn</small></div>
+    <div class="item"><div class="ico">🏆</div><b>Leaderboard</b><small>Top members</small></div>
+  </div>
+
+  <div class="section"><b>Recent Tasks</b><span>View all</span></div>
+  <div class="recent"><div class="taskicon">𝕏</div><div class="taskbody"><b>Follow WorldX Network</b><span class="reward">+1,000 WX</span></div><button class="go success">Done</button></div>
+  <div class="recent"><div class="taskicon">▶️</div><div class="taskbody"><b>Subscribe to WorldX Network</b><span class="reward">+1,000 WX</span></div><button class="go success">Done</button></div>
+  <div class="note">WorldX • Participate • Earn • Connect</div>
+</div>
+
+<nav id="nav" class="hidden">
+  <div class="active"><div class="navico">🏠</div>Home</div>
+  <div><div class="navico">📋</div>Tasks</div>
+  <div><div class="navico">👥</div>Friends</div>
+  <div><div class="navico">👤</div>Profile</div>
+</nav>
+</div>
+
+<script>
+const X_URL="https://x.com/worldxnetwork";
+const YT_URL="https://www.youtube.com/@worldXnet";
+function openX(){window.open(X_URL,"_blank")}
+function openYT(){window.open(YT_URL,"_blank")}
+function verify(){
+ const s=document.getElementById("status");
+ s.textContent="Checking verification…";
+ setTimeout(()=>{s.textContent="Real verification is not connected yet. The app remains locked until the WorldX backend is connected.";},700);
+}
+function checkIn(){document.getElementById("checkMsg").textContent="Daily check-in will be connected to your WorldX account."}
+</script>
+</body>
+</html>
