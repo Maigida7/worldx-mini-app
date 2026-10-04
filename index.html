@@ -189,16 +189,47 @@ button{font:inherit;border:0;cursor:pointer}
   $("ytStart").onclick=startYouTube; $("ytTask").onclick=startYouTube;
 
   async function verifyYouTube(){
-    if(!initData){return;}
-    toast("Checking YouTube subscription...");
-    try{
-      const r=await fetch(BACKEND+"/api/youtube/verify",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({initData})});
-      const d=await r.json();
-      if(d.verified){state.ytVerified=true;toast("YouTube subscription verified ✓",true);render();maybeUnlock();}
-      else toast(d.message||"YouTube subscription not verified yet.");
-    }catch{toast("YouTube verification failed.");}
+  if(!initData){
+    toast("Open WorldX from Telegram to verify YouTube.");
+    return;
   }
-  $("verifyGate").onclick=verifyYouTube;
+
+  toast("Checking YouTube subscription...");
+
+  try{
+    const r = await fetch(BACKEND+"/api/youtube/verify",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({initData})
+    });
+
+    const d = await r.json();
+
+    if(d.verified){
+      state.ytVerified = true;
+      toast("YouTube subscription verified ✓",true);
+      render();
+      maybeUnlock();
+      return;
+    }
+
+    if(d.connected === false){
+      toast("Connect your Google/YouTube account to verify...");
+      setTimeout(()=>{
+        window.location.href =
+          BACKEND+"/api/youtube/start?initData="+encodeURIComponent(initData);
+      },700);
+      return;
+    }
+
+    toast(d.message || "YouTube subscription not verified yet.");
+
+  }catch(e){
+    toast("YouTube verification failed. Try again.");
+  }
+}
+
+$("verifyGate").onclick = verifyYouTube;
 
   let tonUI=null;
   function initWallet(){
