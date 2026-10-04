@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07111f">
+<title>WorldX Network</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+<style>
+:root{--bg:#07111f;--card:#0d1b2e;--card2:#10223a;--text:#f5f8ff;--muted:#8ea0b9;--line:#1b3150;--accent:#4d8dff;--good:#32d583;--warn:#ffbd59;--danger:#ff667a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#102443 0,#07111f 46%,#050c16 100%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}.app{max-width:720px;margin:auto;padding:16px 14px 92px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}.brand{display:flex;align-items:center;gap:10px}.logo{width:44px;height:44px;border-radius:14px;object-fit:cover;background:#10223a;border:1px solid var(--line)}.brand b{font-size:18px}.brand span{display:block;color:var(--muted);font-size:12px;margin-top:2px}.wallet-pill{border:1px solid var(--line);background:rgba(13,27,46,.85);color:var(--text);border-radius:999px;padding:9px 12px;font-size:12px;cursor:pointer}.hero{padding:22px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,#10233d,#0a1728);margin-bottom:14px}.hero .label{font-size:13px;color:var(--muted)}.points{font-size:38px;font-weight:800;letter-spacing:-1px;margin:5px 0 18px}.hero-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.mini{border:1px solid var(--line);background:#0b192b;border-radius:15px;padding:13px}.mini span{display:block;color:var(--muted);font-size:11px}.mini b{display:block;margin-top:5px;font-size:14px}.section{margin:18px 0 9px}.section h2{font-size:16px;margin:0}.section p{margin:4px 0;color:var(--muted);font-size:12px}.card{background:rgba(13,27,46,.9);border:1px solid var(--line);border-radius:20px;padding:15px;margin-bottom:12px}.task{display:flex;align-items:center;gap:11px;padding:12px 0;border-bottom:1px solid var(--line)}.task:last-child{border-bottom:0;padding-bottom:0}.task:first-child{padding-top:0}.icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:#142a46;font-size:20px;flex:0 0 40px}.task-main{min-width:0;flex:1}.task-main b{display:block;font-size:14px}.task-main span{display:block;color:var(--muted);font-size:11px;margin-top:3px;line-height:1.35}.reward{font-size:12px;font-weight:800;white-space:nowrap;color:#9fc3ff}.btn,.smallbtn{border:0;cursor:pointer;color:#fff;background:var(--accent);font-weight:700;border-radius:12px}.btn{padding:12px 15px;width:100%}.smallbtn{padding:9px 11px;font-size:12px;white-space:nowrap}.smallbtn.alt{background:#172c47}.smallbtn.good{background:#17784e}.smallbtn:disabled,.btn:disabled{opacity:.45;cursor:not-allowed}.row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:13px}.row:last-child{border-bottom:0}.notice{margin-top:10px;padding:10px 12px;border-radius:12px;background:#0b192b;color:var(--muted);font-size:11px;line-height:1.45}.status{padding:10px 12px;border-radius:12px;background:#0b192b;color:var(--muted);font-size:12px;margin-bottom:12px}.status.good{color:#8cf0bc}.status.bad{color:#ff9bab}.page{display:none}.page.active{display:block}.nav{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);width:min(690px,calc(100% - 20px));display:grid;grid-template-columns:repeat(4,1fr);gap:7px;padding:8px;border:1px solid var(--line);background:rgba(7,17,31,.94);backdrop-filter:blur(14px);border-radius:18px;z-index:20}.nav button{border:0;background:transparent;color:var(--muted);padding:8px 4px;border-radius:12px;font-size:10px;cursor:pointer}.nav button.active{background:#142b48;color:#fff}.nav i{display:block;font-style:normal;font-size:17px;margin-bottom:2px}.modal{position:fixed;inset:0;background:rgba(0,0,0,.68);display:none;align-items:center;justify-content:center;padding:20px;z-index:50}.modal.show{display:flex}.modal-box{width:min(460px,100%);background:#0d1b2e;border:1px solid var(--line);border-radius:20px;padding:20px;position:relative}.close{position:absolute;right:10px;top:8px;border:0;background:transparent;color:#fff;font-size:26px;cursor:pointer}.muted{color:var(--muted)}.center{text-align:center}.loading{padding:30px;text-align:center;color:var(--muted)}.leader-row{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}.leader-row:last-child{border-bottom:0}.rank{font-weight:800}.small{font-size:11px;color:var(--muted)}#wallet-button{min-width:155px}.hidden{display:none!important}@media(max-width:420px){.app{padding-left:10px;padding-right:10px}.hero{padding:18px}.points{font-size:32px}.task{gap:8px}.smallbtn{padding:8px 9px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="brand"><img class="logo" src="https://maigida7.github.io/worldx-mini-app/icon.png" alt="WorldX logo"><div><b>WorldX Network</b><span>Tasks • Rewards • Community</span></div></div>
+    <button class="wallet-pill" id="walletTop">Connect Wallet</button>
+  </header>
+
+  <div id="status" class="status">Loading your WorldX account…</div>
+
+  <main>
+    <section id="home" class="page active">
+      <div class="hero">
+        <div class="label">Your Points</div>
+        <div class="points" id="points">0 WX</div>
+        <div class="hero-row">
+          <div class="mini"><span>Daily Task</span><b id="dailyState">+500 WX</b></div>
+          <div class="mini"><span>YouTube</span><b id="ytState">Not verified</b></div>
+        </div>
+      </div>
+      <div class="section"><h2>Quick Actions</h2><p>Complete normal tasks. Wallet is optional.</p></div>
+      <div class="card">
+        <div class="task"><div class="icon">📅</div><div class="task-main"><b>Daily Check-in</b><span>Claim once every day.</span></div><button class="smallbtn" id="daily">Claim</button></div>
+        <div class="task"><div class="icon">👥</div><div class="task-main"><b>Invite Friends</b><span>Earn +500 WX for each qualifying referral.</span></div><button class="smallbtn" id="inviteHome">Invite</button></div>
+      </div>
+      <div class="section"><h2>Top Members</h2><p>Live WorldX points leaderboard.</p></div>
+      <div class="card" id="homeLeaderboard"><div class="loading">Loading leaderboard…</div></div>
+    </section>
+
+    <section id="tasks" class="page">
+      <div class="section"><h2>📋 Tasks</h2><p>Complete WorldX tasks and earn WX.</p></div>
+      <div class="card">
+        <div class="task"><div class="icon">▶️</div><div class="task-main"><b>Subscribe to WorldX Network</b><span id="ytTaskStatus">Subscribe on YouTube, then verify.</span></div><div class="row" style="border:0;padding:0"><button class="smallbtn alt" id="ytOpen">Open</button><button class="smallbtn" id="ytVerify">Verify</button></div></div>
+        <div class="task"><div class="icon">📅</div><div class="task-main"><b>Daily Task</b><span id="dailyTaskStatus">+500 WX • once per day</span></div><button class="smallbtn" id="dailyTask">Claim</button></div>
+        <div class="task"><div class="icon">👥</div><div class="task-main"><b>Friends / Referral</b><span>Share your personal WorldX invite link.</span></div><button class="smallbtn" id="inviteTask">Invite</button></div>
+        <div class="task"><div class="icon">𝕏</div><div class="task-main"><b>Follow @worldxnetwork</b><span>+500 WX • verification coming later.</span></div><button class="smallbtn alt" id="xTask">Open</button></div>
+        <div class="task"><div class="icon">🌍</div><div class="task-main"><b>Community Task</b><span id="communityStatus">Join the WorldX community, then claim +500 WX.</span></div><div class="row" style="border:0;padding:0"><button class="smallbtn alt" id="communityJoin">Join</button><button class="smallbtn" id="communityClaim">Claim</button></div></div>
+        <div class="task"><div class="icon">💎</div><div class="task-main"><b>TON Wallet</b><span>Optional profile connection. It does not unlock or gate tasks.</span></div><button class="smallbtn alt" id="walletTask">Connect</button></div>
+        <div class="task"><div class="icon">🎁</div><div class="task-main"><b>Sponsored Tasks</b><span id="sponsorSummary">Advertiser campaigns appear here when available.</span></div><button class="smallbtn alt" id="sponsorTask">View</button></div>
+      </div>
+      <div class="notice">YouTube reward is +1,000 WX after real subscription verification. X is intentionally not auto-verified.</div>
+    </section>
+
+    <section id="friends" class="page">
+      <div class="section"><h2>👥 Friends</h2><p>Invite people with your personal WorldX link.</p></div>
+      <div class="card">
+        <div class="points" style="font-size:28px">+500 WX</div>
+        <p class="muted" style="font-size:12px;line-height:1.5">You receive 500 WX when a new qualifying user joins through your referral and completes their first WorldX account sync.</p>
+        <button class="btn" id="invite">Invite Friends</button>
+        <div class="notice" id="refLinkBox">Your referral link will appear after Telegram authentication.</div>
+      </div>
+    </section>
+
+    <section id="profile" class="page">
+      <div class="section"><h2>👤 Profile</h2><p>Your WorldX account and wallet.</p></div>
+      <div class="card">
+        <div class="row"><span>Name</span><b id="profileName">WorldX Member</b></div>
+        <div class="row"><span>Telegram</span><b id="profileId">Account</b></div>
+        <div class="row"><span>Points</span><b id="profilePoints">0 WX</b></div>
+        <div class="row"><span>YouTube</span><b id="profileYT">Not verified</b></div>
+        <div class="row"><span>Wallet</span><b id="profileWallet">Not connected</b></div>
+      </div>
+      <div class="card"><div class="title" style="font-weight:800;margin-bottom:10px">Connect TON Wallet</div><div id="wallet-button"></div><div class="notice">Wallet connection is optional and never blocks normal WorldX tasks.</div></div>
+    </section>
+  </main>
+</div>
+
+<nav class="nav">
+  <button class="active" data-nav="home"><i>⌂</i>Home</button>
+  <button data-nav="tasks"><i>✓</i>Tasks</button>
+  <button data-nav="friends"><i>👥</i>Friends</button>
+  <button data-nav="profile"><i>👤</i>Profile</button>
+</nav>
+
+<div class="modal" id="modal"><div class="modal-box"><button class="close" id="modalClose">×</button><div style="font-size:18px;font-weight:800">🎁 Sponsored Tasks</div><p class="muted" style="font-size:12px;line-height:1.5">Available advertiser campaigns are loaded from the WorldX backend.</p><div id="sponsoredList" class="notice">No sponsored campaigns available right now.</div></div></div>
+
+<script>
+(() => {
+  const tg = window.Telegram?.WebApp;
+  if (tg) { tg.ready(); tg.expand(); }
+  const BACKEND = "https://winter-salad-7244.aliyuibnharuna.workers.dev";
+  const APP = "https://maigida7.github.io/worldx-mini-app/";
+  const initData = tg?.initData || "";
+  const state = { user:null, wallet:null, ytVerified:false, referralId:null, communityUrl:null, communityConfigured:false };
+  const $ = id => document.getElementById(id);
+
+  function setStatus(msg, type="") { const e=$("status"); e.textContent=msg; e.className="status"+(type?" "+type:""); }
+  function toast(msg, good=false) { if(tg?.showAlert) tg.showAlert(msg); setStatus(msg, good?"good":""); }
+  function shortWallet(a){ return a && a.length>14 ? a.slice(0,7)+"…"+a.slice(-6) : (a||"Not connected"); }
+  function userPoints(){ return Number(state.user?.points || 0); }
+  function render(){
+    $("points").textContent=userPoints()+" WX";
+    $("profilePoints").textContent=userPoints()+" WX";
+    $("profileName").textContent=state.user?.name||"WorldX Member";
+    $("profileId").textContent=state.user?.username ? "@"+state.user.username : (state.user?.id ? "Telegram account" : "Account");
+    $("profileYT").textContent=state.user?.ytVerified ? "Verified ✓" : "Not verified";
+    $("ytState").textContent=state.user?.ytVerified ? "Verified ✓" : "Not verified";
+    $("ytTaskStatus").textContent=state.user?.ytVerified ? "Verified ✓ • +1,000 WX claimed" : "Subscribe on YouTube, then verify.";
+    $("profileWallet").textContent=state.wallet ? shortWallet(state.wallet) : "Not connected";
+    $("walletTop").textContent=state.wallet ? shortWallet(state.wallet) : "Connect Wallet";
+    $("walletTask").textContent=state.wallet ? "Connected" : "Connect";
+  }
+  function showPage(id){ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active")); $(id)?.classList.add("active"); document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.nav===id)); window.scrollTo({top:0,behavior:"smooth"}); }
+  document.querySelectorAll("[data-nav]").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.nav)));
+
+  async function api(path, options={}){
+    const headers={"Content-Type":"application/json",...(options.headers||{})};
+    const r=await fetch(BACKEND+path,{...options,headers});
+    let d={}; try{d=await r.json();}catch{}
+    if(!r.ok && !d.message) d.message="Request failed.";
+    return d;
+  }
+
+  async function sync(){
+    if(!initData){ setStatus("Open WorldX from Telegram to use rewards."); return false; }
+    try{
+      const d=await api("/api/user/sync",{method:"POST",body:JSON.stringify({initData})});
+      if(!d.success) throw new Error(d.message||"Account sync failed.");
+      state.user=d.user||null; state.wallet=d.user?.wallet||null; state.ytVerified=!!d.user?.ytVerified;
+      if(d.referral?.awarded) setStatus("Referral reward added: +500 WX", "good"); else setStatus("WorldX account synced ✓","good");
+      const id=state.user?.id; state.referralId=id?"ref_"+id:null;
+      if(id) $("refLinkBox").textContent="https://t.me/Woldxbot/worldx?startapp=ref_"+id;
+      render(); return true;
+    }catch(e){ setStatus(e.message||"Account sync failed."); return false; }
+  }
+
+  function openExternal(url){ if(tg?.openLink) tg.openLink(url); else window.open(url,"_blank","noopener,noreferrer"); }
+  $("ytOpen").onclick=()=>openExternal("https://www.youtube.com/@worldXnet");
+  $("xTask").onclick=()=>openExternal("https://x.com/worldxnetwork");
+
+  async function verifyYouTube(){
+    if(!initData){toast("Open WorldX inside Telegram first.");return;}
+    setStatus("Checking YouTube subscription…");
+    try{
+      const d=await api("/api/youtube/verify",{method:"POST",body:JSON.stringify({initData})});
+      if(d.verified){ state.user=d.user||state.user; state.ytVerified=true; render(); toast(d.awarded?"YouTube verified ✓ +1,000 WX":"YouTube subscription verified ✓",true); return; }
+      if(d.connected===false){ setStatus("Connect Google/YouTube first…"); setTimeout(()=>{window.location.href=BACKEND+"/api/youtube/start?initData="+encodeURIComponent(initData)},500); return; }
+      setStatus(d.message||"Subscription not verified yet.");
+    }catch(e){setStatus(e.message||"YouTube verification failed.");}
+  }
+  $("ytVerify").onclick=verifyYouTube;
+
+  async function claimDaily(){
+    if(!initData){toast("Open WorldX inside Telegram first.");return;}
+    $("daily").disabled=true; $("dailyTask").disabled=true;
+    try{
+      const d=await api("/api/tasks/daily",{method:"POST",body:JSON.stringify({initData})});
+      if(d.user) state.user=d.user;
+      render();
+      if(d.awarded){ toast("Daily reward: +500 WX",true); $("dailyState").textContent="Claimed ✓"; $("dailyTaskStatus").textContent="Claimed today ✓"; }
+      else toast(d.message||"Daily task already claimed.");
+    }catch(e){toast(e.message||"Daily task failed.");}
+    finally{$("daily").disabled=false;$("dailyTask").disabled=false;}
+  }
+  $("daily").onclick=claimDaily; $("dailyTask").onclick=claimDaily;
+
+  function invite(){
+    if(!state.referralId){toast("Open WorldX from Telegram first.");return;}
+    const url=APP+"?startapp="+encodeURIComponent(state.referralId);
+    const share="https://t.me/share/url?url="+encodeURIComponent("https://t.me/Woldxbot/worldx?startapp="+encodeURIComponent(state.referralId))+"&text="+encodeURIComponent("Join me on WorldX Network 🌍");
+    if(tg?.openTelegramLink) tg.openTelegramLink(share); else window.open(share,"_blank");
+  }
+  $("invite").onclick=invite; $("inviteHome").onclick=invite; $("inviteTask").onclick=invite;
+
+  async function claimCommunity(){
+    if(!initData){toast("Open WorldX inside Telegram first.");return;}
+    try{
+      const d=await api("/api/tasks/community",{method:"POST",body:JSON.stringify({initData})});
+      if(d.communityUrl) state.communityUrl=d.communityUrl;
+      if(d.configured!==undefined) state.communityConfigured=d.configured;
+      if(d.user) state.user=d.user;
+      render();
+      if(d.awarded) toast("Community reward: +500 WX",true); else setStatus(d.message||"Community task not completed yet.");
+      if(d.configured===false) $("communityStatus").textContent="Community verification is waiting for the Telegram community ID to be added in Cloudflare.";
+    }catch(e){toast(e.message||"Community task failed.");}
+  }
+  $("communityClaim").onclick=claimCommunity;
+  $("communityJoin").onclick=()=>{ openExternal(state.communityUrl || "https://t.me/WorldXCommunity"); };
+
+  $("sponsorTask").onclick=()=>$("modal").classList.add("show");
+  $("modalClose").onclick=()=>$("modal").classList.remove("show");
+
+  async function loadSponsored(){
+    try{
+      const d=await api("/api/sponsored/tasks"); const list=Array.isArray(d.tasks)?d.tasks:[];
+      $("sponsorSummary").textContent=list.length?`${list.length} campaign${list.length>1?"s":""} available.`:"No campaigns available right now.";
+      $("sponsoredList").innerHTML=list.length?list.map(t=>`<div class="row"><span>${escapeHtml(t.title||"Sponsored Task")}<small class="small">${escapeHtml(t.description||"")}</small></span><b>+${Number(t.reward||0)} WX</b></div>`).join(""):"No sponsored campaigns available right now.";
+    }catch{}
+  }
+  function escapeHtml(s){return String(s).replace(/[&<>'"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;","\"":"&quot;"}[c]));}
+
+  async function loadLeaderboard(){
+    try{
+      const d=await api("/api/leaderboard"); const rows=Array.isArray(d.leaderboard)?d.leaderboard:[];
+      $("homeLeaderboard").innerHTML=rows.length?rows.slice(0,10).map(x=>`<div class="leader-row"><div class="rank">#${x.rank}</div><div><b>${escapeHtml(x.name||"WorldX Member")}</b><div class="small">${x.username?"@"+escapeHtml(x.username):"WorldX member"}</div></div><b>${Number(x.points||0).toLocaleString()} WX</b></div>`).join(""):"<div class='loading'>No members yet.</div>";
+    }catch{$("homeLeaderboard").innerHTML="<div class='loading'>Leaderboard unavailable.</div>";}
+  }
+
+  let tonUI=null;
+  function initWallet(){
+    if(!window.TON_CONNECT_UI) return;
+    try{
+      tonUI=new TON_CONNECT_UI.TonConnectUI({manifestUrl:"https://maigida7.github.io/worldx-mini-app/tonconnect-manifest.json",buttonRootId:"wallet-button"});
+      tonUI.onStatusChange(async wallet=>{
+        const address=wallet?.account?.address||null; state.wallet=address; render();
+        if(address && initData){
+          try{const d=await api("/api/wallet/connect",{method:"POST",body:JSON.stringify({initData,wallet:address})});if(d.user){state.user=d.user;render();}}catch{}
+        }
+      });
+    }catch(e){setStatus("Wallet module could not start.");}
+  }
+  function openWallet(){if(tonUI) tonUI.openModal(); else setStatus("Wallet module is still loading. Try again in a moment.");}
+  $("walletTop").onclick=openWallet; $("walletTask").onclick=openWallet;
+
+  async function boot(){
+    render(); initWallet();
+    const ok=await sync();
+    await Promise.all([loadLeaderboard(),loadSponsored()]);
+    const params=new URLSearchParams(location.search);
+    if(params.get("youtube")==="connected" && ok){ setTimeout(verifyYouTube,300); history.replaceState({},"",APP); }
+    if(params.get("youtube")==="cancelled"){ setStatus("YouTube connection was cancelled."); history.replaceState({},"",APP); }
+  }
+  boot();
+})();
+</script>
+</body>
+</html>
