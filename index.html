@@ -63,9 +63,25 @@ walletAddress=user.wallet||walletAddress||"";
 $("profileWallet").textContent=walletAddress?walletAddress.slice(0,6)+"…"+walletAddress.slice(-5):"Not connected";
 renderTasks();
 }
+function lagosToday() {
+  const parts = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Africa/Lagos",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).formatToParts(new Date());
+
+  const p = {};
+  parts.forEach(x => p[x.type] = x.value);
+  return `${p.year}-${p.month}-${p.day}`;
+}
+
 function claimed(key) {
-if(key==="daily")return user?.last_daily===new Intl.DateTimeFormat("en-CA",{timeZone:"Africa/Lagos",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
-return(user?.claims||[]).includes(key+":v1");
+  if (key === "daily") {
+    return user?.last_daily === lagosToday();
+  }
+  return (user?.claims || []).includes(key + ":v1");
+}
 }
 function taskHtml(t) {
 const done=claimed(t.key);
