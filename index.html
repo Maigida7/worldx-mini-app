@@ -229,13 +229,13 @@ tonStarting=(async()=>{
 if(!window.TON_CONNECT_UI?.TonConnectUI){
 throw Error("TON Connect library did not load. Refresh WorldX and try again.");
 }
-const ui=new window.TON_CONNECT_UI.TonConnectUI({manifestUrl:MANIFEST});
-ui.uiOptions={
+const ui=new window.TON_CONNECT_UI.TonConnectUI({
+  manifestUrl:MANIFEST,
   actionsConfiguration:{
     twaReturnUrl:"https://t.me/Woldxbot/worldx",
     returnStrategy:"back"
   }
-};
+});
 ui.onStatusChange(async wallet=>{
 if(!wallet?.account?.address)return;
 walletAddress=wallet.account.address;
