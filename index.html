@@ -7,14 +7,14 @@
 <meta name="theme-color" content="#10131b">
 <title>WorldX</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-<script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+<script src="https://unpkg.com/@tonconnect/ui@3.0.0/dist/tonconnect-ui.min.js"></script>
 <style>
 :root{--bg:#10131b;--panel:#191e29;--panel2:#202737;--text:#f4f6fb;--muted:#9aa5b7;--line:#2b3446;--accent:#7b6cff;--green:#4ed39a}
-*{box-sizing:border-box}html{font-size:14px}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:13px;line-height:1.45;padding-bottom:80px}button,a{font:inherit}button{cursor:pointer;border:0}a{color:inherit;text-decoration:none}
-.app{max-width:560px;margin:0 auto;padding:17px 14px 22px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}.brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:16px}.logo{width:32px;height:32px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(135deg,#8777ff,#4c9fff);font-weight:900}.tag{font-size:9px;color:#c7c0ff;background:#2a2546;border:1px solid #40376e;border-radius:20px;padding:5px 8px}
-.eyebrow{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}.balance{padding:18px;border:1px solid #34324f;background:radial-gradient(130% 150% at 100% 0%,#393264 0%,#22223b 38%,#191e29 80%);border-radius:18px;margin-bottom:12px}.balance-label{font-size:12px;color:#c4c6d7}.amount{font-size:28px;font-weight:800;letter-spacing:-.6px;margin:4px 0 12px;line-height:1.2;overflow-wrap:anywhere}.unit{font-size:12px;color:#c5c0ff;font-weight:600}.wallet-actions{display:flex;gap:8px;flex-wrap:wrap}.btn{border-radius:9px;padding:9px 11px;font-weight:650;font-size:11px;min-height:34px}.primary{background:var(--accent);color:white}.secondary{background:#2a3243;color:#f5f6fb;border:1px solid #3a455a}.quiet{background:transparent;border:1px solid var(--line);color:var(--muted)}.status{font-size:11px;color:var(--muted);margin-top:8px;min-height:14px}
-.section-head{display:flex;justify-content:space-between;align-items:center;margin:20px 1px 10px}.section-head h2{font-size:14px;margin:0;font-weight:750}.small-muted{font-size:10px;color:var(--muted)}.stats{display:grid;grid-template-columns:1fr 1fr;gap:9px}.stat{padding:12px;border-radius:13px;background:var(--panel);border:1px solid var(--line)}.stat strong{display:block;font-size:16px;margin-top:3px;overflow-wrap:anywhere}.task-list{display:grid;gap:8px}.task{display:flex;align-items:center;gap:9px;background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:11px}.task-icon{width:35px;height:35px;border-radius:11px;display:grid;place-items:center;background:var(--panel2);font-size:15px;flex-shrink:0}.task-info{min-width:0;flex:1}.task-title{font-size:12px;font-weight:700}.task-desc{font-size:10px;color:var(--muted);margin-top:2px}.reward{font-size:10px;color:#b8afff;font-weight:750;white-space:nowrap;margin-bottom:5px;text-align:right}.task-action{padding:6px 8px;min-height:28px;font-size:10px;border-radius:7px}.task-right{display:flex;flex-direction:column;align-items:flex-end;gap:1px}.pill{font-size:10px;border-radius:7px;padding:5px 7px;background:#263a35;color:var(--green);white-space:nowrap}
-.view{display:none}.view.active{display:block}.nav{position:fixed;z-index:10;bottom:0;left:0;right:0;background:#151923ed;backdrop-filter:blur(16px);border-top:1px solid var(--line);padding:7px max(10px,env(safe-area-inset-right)) calc(7px + env(safe-area-inset-bottom));display:flex;justify-content:center}.nav-inner{width:100%;max-width:560px;display:grid;grid-template-columns:repeat(5,1fr);gap:3px}.nav button{background:transparent;color:#8993a5;padding:6px 2px;border-radius:9px;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:3px}.nav button .ico{font-size:15px;line-height:1.2}.nav button.active{background:#292541;color:#d2ccff}
+*{box-sizing:border-box}html{font-size:14px}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif;font-size:13px;line-height:1.45;padding-bottom:80px}button,a{font:inherit}button{cursor:pointer;border:0}a{color:inherit;text-decoration:none}
+.app{max-width:560px;margin:auto;padding:17px 14px 22px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}.brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:16px}.logo{width:32px;height:32px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(135deg,#8777ff,#4c9fff);font-weight:900}.tag{font-size:9px;color:#c7c0ff;background:#2a2546;border:1px solid #40376e;border-radius:20px;padding:5px 8px}
+.eyebrow{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}.balance{padding:18px;border:1px solid #34324f;background:radial-gradient(130% 150% at 100% 0%,#393264,#22223b 38%,#191e29 80%);border-radius:18px;margin-bottom:12px}.balance-label{font-size:12px;color:#c4c6d7}.amount{font-size:28px;font-weight:800;margin:4px 0 12px;line-height:1.2;overflow-wrap:anywhere}.unit{font-size:12px;color:#c5c0ff;font-weight:600}.wallet-actions{display:flex;gap:8px;flex-wrap:wrap}.btn{border-radius:9px;padding:9px 11px;font-weight:650;font-size:11px;min-height:34px}.primary{background:var(--accent);color:white}.secondary{background:#2a3243;color:#f5f6fb;border:1px solid #3a455a}.quiet{background:transparent;border:1px solid var(--line);color:var(--muted)}.status{font-size:11px;color:var(--muted);margin-top:8px;min-height:14px;overflow-wrap:anywhere}
+.section-head{display:flex;justify-content:space-between;align-items:center;margin:20px 1px 10px}.section-head h2{font-size:14px;margin:0;font-weight:750}.small-muted{font-size:10px;color:var(--muted)}.stats{display:grid;grid-template-columns:1fr 1fr;gap:9px}.stat{padding:12px;border-radius:13px;background:var(--panel);border:1px solid var(--line)}.stat strong{display:block;font-size:16px;margin-top:3px;overflow-wrap:anywhere}.task-list{display:grid;gap:8px}.task{display:flex;align-items:center;gap:9px;background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:11px}.task-icon{width:35px;height:35px;border-radius:11px;display:grid;place-items:center;background:var(--panel2);font-size:15px;flex-shrink:0}.task-info{min-width:0;flex:1}.task-title{font-size:12px;font-weight:700}.task-desc{font-size:10px;color:var(--muted);margin-top:2px}.reward{font-size:10px;color:#b8afff;font-weight:750;white-space:nowrap;margin-bottom:5px;text-align:right}.task-action{padding:6px 8px;min-height:28px;font-size:10px;border-radius:7px}.task-right{display:flex;flex-direction:column;align-items:flex-end}.pill{font-size:10px;border-radius:7px;padding:5px 7px;background:#263a35;color:var(--green);white-space:nowrap}
+.view{display:none}.view.active{display:block}.nav{position:fixed;z-index:10;bottom:0;left:0;right:0;background:#151923ed;backdrop-filter:blur(16px);border-top:1px solid var(--line);padding:7px 10px calc(7px + env(safe-area-inset-bottom));display:flex;justify-content:center}.nav-inner{width:100%;max-width:560px;display:grid;grid-template-columns:repeat(5,1fr);gap:3px}.nav button{background:transparent;color:#8993a5;padding:6px 2px;border-radius:9px;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:3px}.nav button .ico{font-size:15px;line-height:1.2}.nav button.active{background:#292541;color:#d2ccff}
 .panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:13px;margin-bottom:9px}.panel h3{font-size:13px;margin:0 0 5px}.panel p{font-size:11px;color:var(--muted);margin:0 0 11px}.refbox{display:flex;gap:7px}.refbox input{flex:1;min-width:0;background:#111620;color:var(--text);border:1px solid var(--line);border-radius:8px;padding:9px;font-size:10px}.notice{padding:9px 11px;border-radius:9px;background:#252d3c;color:#b9c4d6;font-size:10px;margin-top:9px}.leader-row{display:flex;align-items:center;gap:9px;padding:9px 0;border-bottom:1px solid var(--line)}.leader-row:last-child{border:0}.rank{width:24px;color:var(--muted);font-weight:750}.leader-name{flex:1;font-size:11px;overflow-wrap:anywhere}.leader-points{font-weight:750;font-size:11px}.profile-line{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:11px}.profile-line:last-child{border:0}.error{color:#ff9d9d}.success{color:var(--green)}.foot{font-size:9px;color:#687386;text-align:center;margin-top:18px}
 @media(max-width:360px){.amount{font-size:25px}.app{padding-left:11px;padding-right:11px}.task{padding:9px;gap:7px}.task-icon{width:32px;height:32px}}
 </style>
@@ -28,7 +28,7 @@
 <div class="balance-label">Your Balance</div>
 <div class="amount"><span id="points">—</span> <span class="unit">WDX</span></div>
 <div class="wallet-actions"><button id="connectWallet" class="btn primary">Connect TON Wallet</button><button id="verifyWallet" class="btn secondary">Verify</button></div>
-<div id="walletStatus" class="status"></div>
+<div id="walletStatus" class="status">Wallet not connected.</div>
 </section>
 <div class="stats">
 <div class="stat"><div class="eyebrow">Daily reward</div><strong>+500 WDX</strong><div class="small-muted">Once every day</div></div>
@@ -77,7 +77,6 @@
 </div>
 <div class="panel"><h3>WorldX Network</h3><p>Complete available tasks, invite friends, and track your WDX balance.</p><a class="btn secondary" href="https://t.me/WorldXCommunity" target="_blank" rel="noopener">Open Community</a></div>
 </main>
-
 <div class="foot">WorldX Network · WDX</div>
 </div>
 
@@ -93,11 +92,15 @@
 (()=>{
 "use strict";
 const API="https://winter-salad-7244.aliyuibnharuna.workers.dev";
+const MANIFEST="https://maigida7.github.io/worldx-mini-app/tonconnect-manifest.json";
+const TELEGRAM_RETURN="https://t.me/Woldxbot/worldx";
 const tg=window.Telegram?.WebApp;
 tg?.ready();
 tg?.expand();
 const tgUser=tg?.initDataUnsafe?.user||null;
-let user=null,tonUI=null,walletAddress="";
+let user=null,tonUI=null,walletAddress="",tonStarting=null;
+const $=id=>document.getElementById(id);
+const initData=()=>tg?.initData||"";
 
 const tasks=[
 {key:"daily",icon:"☀️",title:"Daily Reward",desc:"Check in once every day.",reward:500,action:"Claim"},
@@ -105,18 +108,13 @@ const tasks=[
 {key:"x",icon:"𝕏",title:"Follow on X",desc:"Visit the WorldX account on X.",reward:500,url:"https://x.com/worldxnetwork",action:"Open & Claim"},
 {key:"community",icon:"✦",title:"Community",desc:"Join the WorldX Telegram community.",reward:500,url:"https://t.me/WorldXCommunity",action:"Join & Verify"}
 ];
-const $=id=>document.getElementById(id);
-const initData=()=>tg?.initData||"";
 
 async function api(path,body={}) {
-const headers={"Content-Type":"application/json","X-Telegram-Init-Data":initData()};
-const options={method:"POST",headers,body:JSON.stringify(body)};
-const r=await fetch(API+path,options);
+const r=await fetch(API+path,{method:"POST",headers:{"Content-Type":"application/json","X-Telegram-Init-Data":initData()},body:JSON.stringify(body)});
 const d=await r.json().catch(()=>({}));
 if(!r.ok||d.ok===false)throw Error(d.error||"Request failed. Open WorldX from Telegram and try again.");
 return d;
 }
-
 function updateUser(next) {
 if(!next)return;
 user=next;
@@ -128,59 +126,39 @@ walletAddress=user.wallet||walletAddress||"";
 $("profileWallet").textContent=walletAddress?walletAddress.slice(0,6)+"…"+walletAddress.slice(-5):"Not connected";
 renderTasks();
 }
-
 function lagosToday(){
-const parts=new Intl.DateTimeFormat("en-GB",{
-timeZone:"Africa/Lagos",year:"numeric",month:"2-digit",day:"2-digit"
-}).formatToParts(new Date());
-const p={};
-parts.forEach(x=>{p[x.type]=x.value;});
+const parts=new Intl.DateTimeFormat("en-GB",{timeZone:"Africa/Lagos",year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(new Date());
+const p={};parts.forEach(x=>p[x.type]=x.value);
 return `${p.year}-${p.month}-${p.day}`;
 }
-
-function claimed(key) {
+function claimed(key){
 if(key==="daily")return user?.last_daily===lagosToday();
 return(user?.claims||[]).includes(key+":v1");
 }
-
-function taskHtml(t) {
+function taskHtml(t){
 const done=claimed(t.key);
-return `<div class="task">
-<div class="task-icon">${t.icon}</div>
-<div class="task-info"><div class="task-title">${t.title}</div><div class="task-desc">${t.desc}</div></div>
-<div class="task-right"><div class="reward">+${t.reward.toLocaleString()} WDX</div>
-${done?'<span class="pill">Claimed ✓</span>':`<button class="btn primary task-action" data-claim="${t.key}">${t.action}</button>`}
-</div></div>`;
+return `<div class="task"><div class="task-icon">${t.icon}</div><div class="task-info"><div class="task-title">${t.title}</div><div class="task-desc">${t.desc}</div></div><div class="task-right"><div class="reward">+${t.reward.toLocaleString()} WDX</div>${done?'<span class="pill">Claimed ✓</span>':`<button class="btn primary task-action" data-claim="${t.key}">${t.action}</button>`}</div></div>`;
 }
-
 function renderTasks(){
 $("homeTasks").innerHTML=tasks.slice(0,3).map(taskHtml).join("");
 $("allTasks").innerHTML=tasks.map(taskHtml).join("");
 }
-
 function toast(msg,error=false){
 const el=$("walletStatus");
 el.textContent=msg;
 el.className="status "+(error?"error":"success");
 }
-
-async function claim(key) {
-const t=tasks.find(x=>x.key===key);
-if(!t)return;
-const buttons=document.querySelectorAll(`[data-claim="${key}"]`);
-buttons.forEach(b=>{b.disabled=true;b.textContent="Please wait…";});
-try {
+async function claim(key){
+const t=tasks.find(x=>x.key===key);if(!t)return;
+document.querySelectorAll(`[data-claim="${key}"]`).forEach(b=>{b.disabled=true;b.textContent="Please wait…";});
+try{
 if(t.url)window.open(t.url,"_blank","noopener");
 const d=await api("/api/tasks/"+key);
 updateUser(d.user);
 toast(d.alreadyClaimed?"This reward has already been claimed.":`Success! +${d.reward} WDX`);
-} catch(e) {
-toast(e.message,true);
-} finally {
-renderTasks();
+}catch(e){toast(e.message,true);}
+finally{renderTasks();}
 }
-}
-
 document.querySelectorAll("[data-view]").forEach(b=>b.addEventListener("click",()=>{
 const v=b.dataset.view;
 document.querySelectorAll(".view").forEach(x=>x.classList.remove("active"));
@@ -189,123 +167,112 @@ document.querySelectorAll("[data-view]").forEach(x=>x.classList.toggle("active",
 if(v==="leaderboard")loadBoard();
 if(v==="friends")loadReferrals();
 }));
-
 document.addEventListener("click",e=>{
-const b=e.target.closest("[data-claim]");
-if(b)claim(b.dataset.claim);
+const b=e.target.closest("[data-claim]");if(b)claim(b.dataset.claim);
 });
-
-function esc(s){
-return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-}
-
-async function loadBoard() {
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+async function loadBoard(){
 $("leaderboard").innerHTML='<div class="small-muted">Loading…</div>';
-try {
-const d=await api("/api/leaderboard");
-const rows=d.leaderboard||[];
-$("leaderboard").innerHTML=rows.length?rows.map((u,i)=>
-`<div class="leader-row"><div class="rank">${i+1}</div><div class="leader-name">${esc(u.first_name||u.username||"WorldX User")}${u.username?` <span class="small-muted">@${esc(u.username)}</span>`:""}</div><div class="leader-points">${Number(u.points||u.balance||0).toLocaleString()} WDX</div></div>`
-).join(""):'<div class="small-muted">Leaderboard is empty for now.</div>';
-} catch(e) {
-$("leaderboard").textContent=e.message;
-}
+try{
+const d=await api("/api/leaderboard"),rows=d.leaderboard||[];
+$("leaderboard").innerHTML=rows.length?rows.map((u,i)=>`<div class="leader-row"><div class="rank">${i+1}</div><div class="leader-name">${esc(u.first_name||u.username||"WorldX User")}${u.username?` <span class="small-muted">@${esc(u.username)}</span>`:""}</div><div class="leader-points">${Number(u.points||u.balance||0).toLocaleString()} WDX</div></div>`).join(""):'<div class="small-muted">Leaderboard is empty for now.</div>';
+}catch(e){$("leaderboard").textContent=e.message;}
 }
 $("refreshBoard").addEventListener("click",loadBoard);
 
 async function loadReferrals(){
 if(!initData()){
 $("refStatus").textContent="Open WorldX from Telegram to load referral information.";
-$("refHistory").innerHTML='<div class="small-muted">Telegram login is required.</div>';
-return;
+$("refHistory").innerHTML='<div class="small-muted">Telegram login is required.</div>';return;
 }
-$("refTotal").textContent="…";
-$("refRewards").textContent="… WDX";
+$("refTotal").textContent="…";$("refRewards").textContent="… WDX";
 $("refHistory").innerHTML='<div class="small-muted">Loading referrals…</div>';
 try{
 const d=await api("/api/referrals");
-const total=Number(d.total??d.successful??0);
-const rewards=Number(d.rewards??0);
-$("refTotal").textContent=total.toLocaleString("en-US");
-$("refRewards").textContent=rewards.toLocaleString("en-US")+" WDX";
+$("refTotal").textContent=Number(d.total??d.successful??0).toLocaleString("en-US");
+$("refRewards").textContent=Number(d.rewards??0).toLocaleString("en-US")+" WDX";
 const rows=Array.isArray(d.referrals)?d.referrals:[];
-if(!rows.length){
-$("refHistory").innerHTML='<div class="small-muted">No recorded referrals yet. Share your invite link to get started.</div>';
-}else{
-$("refHistory").innerHTML=rows.map((r,i)=>{
-const date=r.date||r.at||"";
-let dateText="Date unavailable";
-if(date){
-const parsed=new Date(date);
-dateText=Number.isNaN(parsed.getTime())?esc(date):esc(parsed.toLocaleDateString("en-GB"));
-}
-const reward=Number(r.reward??500);
-return `<div class="leader-row"><div class="rank">${i+1}</div><div class="leader-name">Referral<br><span class="small-muted">${dateText}</span></div><div class="leader-points">+${reward.toLocaleString("en-US")} WDX</div></div>`;
-}).join("");
-}
+$("refHistory").innerHTML=rows.length?rows.map((r,i)=>{
+const rawDate=r.date||r.at||"";
+const parsed=new Date(rawDate);
+const dateText=rawDate?(Number.isNaN(parsed.getTime())?esc(rawDate):esc(parsed.toLocaleDateString("en-GB"))):"Date unavailable";
+return `<div class="leader-row"><div class="rank">${i+1}</div><div class="leader-name">Referral<br><span class="small-muted">${dateText}</span></div><div class="leader-points">+${Number(r.reward??500).toLocaleString("en-US")} WDX</div></div>`;
+}).join(""):'<div class="small-muted">No recorded referrals yet. Share your invite link to get started.</div>';
 $("refStatus").textContent="Referral information updated.";
 $("refStatus").className="status success";
 }catch(e){
-$("refTotal").textContent="—";
-$("refRewards").textContent="— WDX";
+$("refTotal").textContent="—";$("refRewards").textContent="— WDX";
 $("refHistory").innerHTML='<div class="small-muted">Could not load referrals. Please try Refresh.</div>';
-$("refStatus").textContent=e.message;
-$("refStatus").className="status error";
+$("refStatus").textContent=e.message;$("refStatus").className="status error";
 }
 }
 $("refreshReferrals").addEventListener("click",loadReferrals);
-
 $("copyRef").addEventListener("click",async()=>{
 const value=$("refLink").value;
 if(!value||value.startsWith("Open WorldX")){
-$("refStatus").textContent="Open WorldX from Telegram first.";
-$("refStatus").className="status error";
-return;
+$("refStatus").textContent="Open WorldX from Telegram first.";return;
 }
 try{
-if(navigator.clipboard?.writeText){
-await navigator.clipboard.writeText(value);
-}else{
-$("refLink").select();
-if(!document.execCommand("copy"))throw Error("Copy unavailable");
-}
-$("refStatus").textContent="Invite link copied.";
-$("refStatus").className="status success";
+if(navigator.clipboard?.writeText)await navigator.clipboard.writeText(value);
+else{$("refLink").select();if(!document.execCommand("copy"))throw Error("Copy unavailable");}
+$("refStatus").textContent="Invite link copied.";$("refStatus").className="status success";
 }catch{
-$("refLink").select();
-$("refStatus").textContent="Select the link and copy it.";
-$("refStatus").className="status error";
+$("refLink").select();$("refStatus").textContent="Select the link and copy it.";$("refStatus").className="status error";
 }
 });
 
-function initTon() {
-if(!window.TON_CONNECT_UI?.TonConnectUI)return;
-if(tonUI)return;
-try {
-tonUI=new TON_CONNECT_UI.TonConnectUI({
-manifestUrl:"https://maigida7.github.io/worldx-mini-app/tonconnect-manifest.json"
-});
-tonUI.onStatusChange(async w=>{
-if(!w?.account?.address)return;
-walletAddress=w.account.address;
+/* TON CONNECT */
+async function initTon(){
+if(tonUI)return tonUI;
+if(tonStarting)return tonStarting;
+tonStarting=(async()=>{
+if(!window.TON_CONNECT_UI?.TonConnectUI){
+throw Error("TON Connect library did not load. Refresh WorldX and try again.");
+}
+const ui=new window.TON_CONNECT_UI.TonConnectUI({manifestUrl:MANIFEST});
+ui.uiOptions={twaReturnUrl:TELEGRAM_RETURN};
+ui.onStatusChange(async wallet=>{
+if(!wallet?.account?.address)return;
+walletAddress=wallet.account.address;
+$("profileWallet").textContent=walletAddress.slice(0,6)+"…"+walletAddress.slice(-5);
+toast("Wallet connected. Saving wallet…");
 try{
 const d=await api("/api/wallet/connect",{address:walletAddress});
 updateUser(d.user);
-toast("Wallet connected.");
-}catch(e){toast(e.message,true);}
+toast("Wallet connected successfully.");
+}catch(e){
+toast("Wallet connected, but saving failed: "+e.message,true);
+}
+},err=>{
+toast("TON Connect error: "+(err?.message||"Connection failed. Try again."),true);
 });
-} catch(e) {
-toast("TON Connect could not initialize. Check the manifest file.",true);
+if(typeof ui.onModalStateChange==="function"){
+ui.onModalStateChange(state=>{
+if(state?.status==="opened")toast("Choose your TON wallet below.");
+});
 }
+tonUI=ui;
+return ui;
+})();
+try{return await tonStarting;}
+finally{tonStarting=null;}
 }
-
 $("connectWallet").addEventListener("click",async()=>{
-if(!tonUI)initTon();
-if(!tonUI){toast("Wallet connector could not load. Refresh the app.",true);return;}
-try{await tonUI.openModal();}
-catch{toast("Could not open TON Connect. Check the manifest file.",true);}
+const button=$("connectWallet");
+button.disabled=true;
+button.textContent="Opening wallets…";
+toast("Connecting to TON Connect…");
+try{
+const ui=await initTon();
+await ui.openModal();
+toast("Choose a wallet from the list.");
+}catch(e){
+toast(e?.message||"Could not open wallet list. Refresh WorldX and try again.",true);
+}finally{
+button.disabled=false;
+button.textContent="Connect TON Wallet";
+}
 });
-
 $("verifyWallet").addEventListener("click",async()=>{
 if(!walletAddress&&tonUI?.wallet?.account?.address)walletAddress=tonUI.wallet.account.address;
 if(!walletAddress){toast("Connect your TON wallet first.",true);return;}
@@ -316,30 +283,27 @@ toast("Connected wallet confirmed. No payment required.");
 }catch(e){toast(e.message,true);}
 });
 
-async function boot() {
+async function boot(){
 renderTasks();
 if(!initData()){
 $("points").textContent="Open in Telegram";
-toast("Please open WorldX from the Telegram bot.",true);
-return;
+toast("Please open WorldX from the Telegram bot.",true);return;
 }
-try {
+try{
 const d=await api("/api/user/sync",{start_param:tg?.initDataUnsafe?.start_param||""});
 updateUser(d.user);
 $("refLink").value=`https://t.me/Woldxbot/worldx?startapp=ref_${d.user.id}`;
-initTon();
-if(tonUI){
 try{
-const w=await tonUI.connectionRestored;
-if(w?.account?.address){
-walletAddress=w.account.address;
+const ui=await initTon();
+const wallet=await ui.connectionRestored;
+if(wallet?.account?.address){
+walletAddress=wallet.account.address;
 $("profileWallet").textContent=walletAddress.slice(0,6)+"…"+walletAddress.slice(-5);
 }
-}catch{}
+}catch(e){
+console.warn("TON Connect initialization:",e);
 }
-} catch(e) {
-toast(e.message,true);
-}
+}catch(e){toast(e.message,true);}
 }
 boot();
 })();
