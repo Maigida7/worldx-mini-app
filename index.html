@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -27,7 +26,7 @@
 <section class="balance">
 <div class="balance-label">Your Balance</div>
 <div class="amount"><span id="points">—</span> <span class="unit">WDX</span></div>
-<div class="wallet-actions"><button id="connectWallet" class="btn primary">Connect TON Wallet</button><button id="verifyWallet" class="btn secondary">Verify</button></div>
+<div class="wallet-actions"><button id="connectWallet" class="btn primary">Connect TON Wallet</button></div>
 <div id="walletStatus" class="status">Wallet not connected.</div>
 </section>
 <div class="stats">
@@ -75,7 +74,7 @@
 <div class="profile-line"><span class="small-muted">Telegram ID</span><strong id="profileId">—</strong></div>
 <div class="profile-line"><span class="small-muted">TON Wallet</span><strong id="profileWallet">Not connected</strong></div>
 </div>
-<div class="panel"><h3>WorldX Network</h3><p>Complete available tasks, invite friends, and track your WDX balance.</p><a class="btn secondary" href="https://t.me/WorldXCommunity" target="_blank" rel="noopener">Open Community</a></div>
+<div class="panel"><h3>WorldX Network</h3><p>Complete available tasks, invite friends, and track your WDX balance.</p><a class="btn secondary" href="https://t.me/worldx_community" target="_blank" rel="noopener">Open Community Channel</a></div>
 </main>
 <div class="foot">WorldX Network · WDX</div>
 </div>
@@ -106,7 +105,7 @@ const tasks=[
 {key:"daily",icon:"☀️",title:"Daily Reward",desc:"Check in once every day.",reward:500,action:"Claim"},
 {key:"youtube",icon:"▶️",title:"YouTube",desc:"Visit the WorldX YouTube channel.",reward:1000,url:"https://www.youtube.com/@worldXnet",action:"Open & Claim"},
 {key:"x",icon:"𝕏",title:"Follow on X",desc:"Visit the WorldX account on X.",reward:500,url:"https://x.com/worldxnetwork",action:"Open & Claim"},
-{key:"community",icon:"✦",title:"Community",desc:"Join the WorldX Telegram community.",reward:500,url:"https://t.me/WorldXCommunity",action:"Join & Verify"}
+{key:"community",icon:"✦",title:"Community Channel",desc:"Join the official WorldX Telegram channel.",reward:500,url:"https://t.me/worldx_community",action:"Join Channel"}
 ];
 
 async function api(path,body={}) {
@@ -122,9 +121,16 @@ $("points").textContent=Number(user.points??user.balance??0).toLocaleString("en-
 $("profileName").textContent=user.first_name||tgUser?.first_name||"Telegram User";
 $("profileUsername").textContent=user.username?"@"+user.username:"—";
 $("profileId").textContent=user.id||tgUser?.id||"—";
-walletAddress=user.wallet||walletAddress||"";
-$("profileWallet").textContent=walletAddress?walletAddress.slice(0,6)+"…"+walletAddress.slice(-5):"Not connected";
+if(user.wallet&&!walletAddress)walletAddress=user.wallet;
+syncWalletUI();
 renderTasks();
+}
+function syncWalletUI(){
+const connected=!!walletAddress;
+$("profileWallet").textContent=connected?walletAddress.slice(0,6)+"…"+walletAddress.slice(-5):"Not connected";
+$("connectWallet").textContent=connected?"TON Wallet Connected":"Connect TON Wallet";
+$("connectWallet").classList.toggle("primary",!connected);
+$("connectWallet").classList.toggle("secondary",connected);
 }
 function lagosToday(){
 const parts=new Intl.DateTimeFormat("en-GB",{timeZone:"Africa/Lagos",year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(new Date());
@@ -230,22 +236,27 @@ if(!window.TON_CONNECT_UI?.TonConnectUI){
 throw Error("TON Connect library did not load. Refresh WorldX and try again.");
 }
 const ui=new window.TON_CONNECT_UI.TonConnectUI({
-  manifestUrl:MANIFEST,
-  actionsConfiguration:{
-    twaReturnUrl:"https://t.me/Woldxbot/worldx",
-    returnStrategy:"back"
-  }
+manifestUrl:MANIFEST,
+actionsConfiguration:{twaReturnUrl:TELEGRAM_RETURN,returnStrategy:"back"}
 });
 ui.onStatusChange(async wallet=>{
-if(!wallet?.account?.address)return;
+if(!wallet?.account?.address){
+walletAddress="";
+syncWalletUI();
+toast("Wallet disconnected.");
+return;
+}
 walletAddress=wallet.account.address;
-$("profileWallet").textContent=walletAddress.slice(0,6)+"…"+walletAddress.slice(-5);
+syncWalletUI();
 toast("Wallet connected. Saving wallet…");
 try{
 const d=await api("/api/wallet/connect",{address:walletAddress});
 updateUser(d.user);
+walletAddress=wallet.account.address;
+syncWalletUI();
 toast("Wallet connected successfully.");
 }catch(e){
+syncWalletUI();
 toast("Wallet connected, but saving failed: "+e.message,true);
 }
 },err=>{
@@ -264,32 +275,31 @@ finally{tonStarting=null;}
 }
 $("connectWallet").addEventListener("click",async()=>{
 const button=$("connectWallet");
+try{
+const ui=await initTon();
+if(ui.wallet?.account?.address){
+await ui.disconnect();
+walletAddress="";
+syncWalletUI();
+toast("Wallet disconnected.");
+return;
+}
 button.disabled=true;
 button.textContent="Opening wallets…";
 toast("Connecting to TON Connect…");
-try{
-const ui=await initTon();
 await ui.openModal();
-toast("Choose a wallet from the list.");
+toast("Choose your wallet from the list.");
 }catch(e){
 toast(e?.message||"Could not open wallet list. Refresh WorldX and try again.",true);
 }finally{
 button.disabled=false;
-button.textContent="Connect TON Wallet";
+syncWalletUI();
 }
-});
-$("verifyWallet").addEventListener("click",async()=>{
-if(!walletAddress&&tonUI?.wallet?.account?.address)walletAddress=tonUI.wallet.account.address;
-if(!walletAddress){toast("Connect your TON wallet first.",true);return;}
-try{
-const d=await api("/api/wallet/verify",{address:walletAddress});
-updateUser(d.user);
-toast("Connected wallet confirmed. No payment required.");
-}catch(e){toast(e.message,true);}
 });
 
 async function boot(){
 renderTasks();
+syncWalletUI();
 if(!initData()){
 $("points").textContent="Open in Telegram";
 toast("Please open WorldX from the Telegram bot.",true);return;
@@ -303,7 +313,7 @@ const ui=await initTon();
 const wallet=await ui.connectionRestored;
 if(wallet?.account?.address){
 walletAddress=wallet.account.address;
-$("profileWallet").textContent=walletAddress.slice(0,6)+"…"+walletAddress.slice(-5);
+syncWalletUI();
 }
 }catch(e){
 console.warn("TON Connect initialization:",e);
